@@ -23,7 +23,6 @@ header > .container > h2 {
 }
 
 /* Main */
-
 main > .container {
   padding: 0.5rem 0.75rem;
 }
@@ -95,8 +94,16 @@ main > .container form > .row button {
 
 main > .container form > .row button:hover {
   cursor: pointer;
+  background-color: #7644c7;
+  border-color: #7644c7;
 }
 
+main > .container form > .row button:active {
+  background-color: #3f1b5c;
+  border-color: #3f1b5c;
+}
+
+/* Media Query */
 @media screen and (min-width: 768px) {
   header > .container > h1,
   header > .container > h2,

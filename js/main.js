@@ -8,12 +8,11 @@ $photoURL.addEventListener('input', () => {
 });
 
 // Submit Event Listener
-const $saveButton = document.querySelector('#save-button');
 const $form = document.querySelector('form');
 const $title = document.querySelector('#title');
 const $notes = document.querySelector('#notes');
 
-$saveButton.addEventListener('submit', event => {
+$form.addEventListener('submit', event => {
   event.preventDefault();
 
   const entry = {

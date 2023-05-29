@@ -22,21 +22,17 @@ header > .container > h2 {
   padding: 0.5rem 0.75rem;
 }
 
-header > .container > .img-container {
-  padding: 0.5rem 0.75rem;
-}
-
-header > .container > .img-container > img {
-  width: 100%;
-  height: 250px;
-  border-radius: 0.25rem;
-  object-fit: cover;
-}
-
 /* Main */
 
 main > .container {
   padding: 0.5rem 0.75rem;
+}
+
+main > .container > .journal-entry > .img-container > img {
+  width: 100%;
+  height: 250px;
+  border-radius: 0.25rem;
+  object-fit: cover;
 }
 
 main > .container > .journal-entry > form {
@@ -47,6 +43,7 @@ main > .container > .journal-entry > form {
 main > .container > .journal-entry > form > label {
   font-size: 0.75rem;
   font-weight: 700;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
@@ -56,6 +53,9 @@ main > .container > .journal-entry > form > input {
   font-weight: 400;
   margin-bottom: 1rem;
   padding: 0.25rem;
+  outline: none;
+  border: 1px solid #c7c7c7;
+  border-radius: 0.25rem;
 }
 
 main > .container > .journal-entry > form > textarea {
@@ -65,9 +65,17 @@ main > .container > .journal-entry > form > textarea {
   margin-bottom: 1rem;
   padding: 0.25rem;
   resize: none;
+  outline: none;
+  border: 1px solid #c7c7c7;
+  border-radius: 0.25rem;
 }
 
-main > .container > .journal-entry > form > button {
+main > .container > .journal-entry > form > input:focus,
+main > .container > .journal-entry > form > textarea:focus {
+  border: 2px solid #562b81;
+}
+
+main > .container > .journal-entry > button {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   font-size: 0.75rem;
@@ -77,5 +85,17 @@ main > .container > .journal-entry > form > button {
   padding: 0.25rem 0.75rem;
   border: 1px solid #562b81;
   border-radius: 0.25rem;
-  align-self: flex-end;
+  margin-left: auto;
+}
+
+@media screen and (min-width: 768px) {
+  header > .container > h1,
+  header > .container > h2,
+  main > .container {
+    padding: 0.5rem 10rem;
+  }
+
+  main > .container > .journal-entry > .img-container > img {
+    width: 95%;
+  }
 }

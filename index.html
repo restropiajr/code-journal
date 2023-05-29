@@ -23,25 +23,28 @@
     <div class="container column-full">
       <h1>Code Journal</h1>
       <h2>New Entry</h2>
-      <div class="img-container">
-        <img src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
-      </div>
     </div>
   </header>
 
   <main>
     <div class="container column-full">
-      <div class="journal-entry" data-view="entry-form">
-        <form>
+      <div class="journal-entry row" data-view="entry-form">
+        <div class="img-container column-half">
+          <img src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
+        </div>
+        <form id="input-form" class="column-half">
           <label for="title">Title</label>
           <input type="text" id="title" name="title">
           <label for="photo-url">Photo URL</label>
           <input type="text" id="photo-url" name="photo-url">
+        </form>
+        <form id="textarea-form" class="column-full">
           <label for="notes">Notes</label>
           <textarea name="notes" id="notes" cols="30" rows="7"></textarea>
-          <button type="submit">SAVE</button>
         </form>
+        <button class="submit-button">SAVE</button>
       </div>
+
       <div data-view="entries" class="hidden"></div>
     </div>
   </main>

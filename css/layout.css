@@ -5,7 +5,7 @@
 .container {
   max-width: 575px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .row {
@@ -13,8 +13,7 @@
   flex-wrap: wrap;
 }
 
-.column-full,
-.column-half {
+.column-full {
   width: 100%;
 }
 
@@ -23,12 +22,11 @@
     max-width: 900px;
   }
 
-  .column-full,
-  .column-half {
-    padding: 0 0.75rem;
-  }
-
   .column-half {
     width: 50%;
+  }
+
+  h1 {
+    padding: 0 15rem;
   }
 }

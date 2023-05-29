@@ -1,5 +1,5 @@
 
-// Photo Preview Event Listener
+// Input Event Listener
 const $photoURL = document.querySelector('#photo-url');
 const $photoPreview = document.querySelector(('#photo-preview'));
 

@@ -28,21 +28,25 @@
 
   <main>
     <div class="container column-full">
-      <div class="journal-entry row" data-view="entry-form">
-        <div class="img-container column-half">
-          <img id="photo-preview" src="images/placeholder-image-square.jpg" alt="photo-preview">
-        </div>
-        <form id="input-form" class="column-half">
-          <label for="title">Title</label>
-          <input type="text" id="title" name="title" required>
-          <label for="photo-url">Photo URL</label>
-          <input type="text" id="photo-url" name="photo-url" required>
+      <div data-view="entry-form">
+        <form>
+          <div class="row">
+            <div class="img-container column-half">
+              <img id="photo-preview" src="images/placeholder-image-square.jpg" alt="photo-preview">
+            </div>
+            <div class="column-half">
+              <label for="title">Title</label>
+              <input type="text" id="title" name="title" required>
+              <label for="photo-url">Photo URL</label>
+              <input type="text" id="photo-url" name="photo-url" required>
+            </div>
+            <div class="column-full">
+              <label for="notes">Notes</label>
+              <textarea name="notes" id="notes" cols="30" rows="7" required></textarea>
+            </div>
+            <button type="submit" id="save-button">SAVE</button>
+          </div>
         </form>
-        <form id="textarea-form" class="column-full">
-          <label for="notes">Notes</label>
-          <textarea name="notes" id="notes" cols="30" rows="7"></textarea>
-        </form>
-        <button class="submit-button">SAVE</button>
       </div>
 
       <div data-view="entries" class="hidden"></div>

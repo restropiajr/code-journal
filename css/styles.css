@@ -28,37 +28,42 @@ main > .container {
   padding: 0.5rem 0.75rem;
 }
 
-main > .container > .journal-entry > .img-container > img {
+main > .container form > .row > .img-container > img {
   width: 100%;
   height: 250px;
   border-radius: 0.25rem;
   object-fit: cover;
 }
 
-main > .container > .journal-entry > form {
+main > .container form > .row > .column-half {
   display: flex;
   flex-direction: column;
 }
 
-main > .container > .journal-entry > form > label {
+main > .container form > .row label {
   font-size: 0.75rem;
   font-weight: 700;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-main > .container > .journal-entry > form > input {
+main > .container form > .row input {
   font-family: "Proza Libre", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   padding: 0.25rem;
   outline: none;
   border: 1px solid #c7c7c7;
   border-radius: 0.25rem;
 }
 
-main > .container > .journal-entry > form > textarea {
+main > .container form > .row > .column-full {
+  display: flex;
+  flex-direction: column;
+}
+
+main > .container form > .row textarea {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   font-size: 0.75rem;
@@ -70,12 +75,12 @@ main > .container > .journal-entry > form > textarea {
   border-radius: 0.25rem;
 }
 
-main > .container > .journal-entry > form > input:focus,
-main > .container > .journal-entry > form > textarea:focus {
+main > .container form > .row input:focus,
+main > .container form > .row textarea:focus {
   border: 2px solid #562b81;
 }
 
-main > .container > .journal-entry > button {
+main > .container form > .row button {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   font-size: 0.75rem;
@@ -88,6 +93,10 @@ main > .container > .journal-entry > button {
   margin-left: auto;
 }
 
+main > .container form > .row button:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
   header > .container > h1,
   header > .container > h2,
@@ -95,7 +104,7 @@ main > .container > .journal-entry > button {
     padding: 0.5rem 10rem;
   }
 
-  main > .container > .journal-entry > .img-container > img {
+  main > .container form > .row > .img-container > img {
     width: 95%;
   }
 }

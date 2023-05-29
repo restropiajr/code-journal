@@ -32,3 +32,50 @@ header > .container > .img-container > img {
   border-radius: 0.25rem;
   object-fit: cover;
 }
+
+/* Main */
+
+main > .container {
+  padding: 0.5rem 0.75rem;
+}
+
+main > .container > .journal-entry > form {
+  display: flex;
+  flex-direction: column;
+}
+
+main > .container > .journal-entry > form > label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+main > .container > .journal-entry > form > input {
+  font-family: "Proza Libre", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+}
+
+main > .container > .journal-entry > form > textarea {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  resize: none;
+}
+
+main > .container > .journal-entry > form > button {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-decoration: none;
+  background-color: #562b81;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #562b81;
+  border-radius: 0.25rem;
+  align-self: flex-end;
+}

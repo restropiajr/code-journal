@@ -11,7 +11,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -22,12 +22,22 @@
   <header>
     <div class="container column-full">
       <h1>Code Journal</h1>
+      <h2>New Entry</h2>
+      <div class="img-container">
+        <img src="images/placeholder-image-square.jpg" alt="placeholder-image-square">
+      </div>
     </div>
-
   </header>
-  <main class="container">
-    <div data-view="entry-form"></div>
-    <div data-view="entries" class="hidden"></div>
+
+  <main>
+    <div class="container column-full"">
+      <div data-view="entry-form">
+        <form>
+
+        </form>
+      </div>
+      <div data-view="entries" class="hidden"></div>
+    </div>
   </main>
 
   <script src="js/data.js"></script>

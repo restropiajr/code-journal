@@ -1,12 +1,34 @@
-/* Header */
-
-header > .container {
-  background-color: #562b81;
+body {
+  font-family: "Proza Libre", sans-serif;
 }
 
-h1 {
+/* Header */
+header > .container {
+  padding: 0;
+}
+
+header > .container > h1 {
   font-size: 1rem;
-  font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   color: white;
+  background-color: #562b81;
+  padding: 0.5rem 0.75rem;
+}
+
+header > .container > h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+  padding: 0.5rem 0.75rem;
+}
+
+header > .container > .img-container {
+  padding: 0.5rem 0.75rem;
+}
+
+header > .container > .img-container > img {
+  width: 100%;
+  height: 250px;
+  border-radius: 0.25rem;
+  object-fit: cover;
 }

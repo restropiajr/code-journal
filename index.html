@@ -24,13 +24,15 @@
       <div class="row">
         <div class="column-full">
           <h1>Code Journal</h1>
+          <p>Entries</p>
         </div>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <div data-view="entry-form">
+
+    <div class="entry-form hidden" data-view="entry-form">
       <div class="row">
         <div class="column-full">
           <h2>New Entry</h2>
@@ -58,13 +60,32 @@
       </div>
     </div>
 
-    <div data-view="entries" class="hidden">
+    <div class="entries" data-view="entries">
       <div class="row">
         <div class="column-full">
-          <ul></ul>
+          <h2>Entries</h2>
+          <button type="submit" id="new-button">NEW</button>
+        </div>
+        <div class="column-full">
+          <ul>
+            <li>
+              <div class="row">
+                <div class="img-container column-half">
+                  <img src="https://picsum.photos/id/237/200/300" alt="dog">
+                </div>
+                <div class="column-half">
+                  <h3>Ada LoveLace</h3>
+                  <p>Augusta ipsum dolor sit amet consectetur adipisicing elit. Omnis, consequatur molestias. Alias
+                    architecto magnam ad fuga consequuntur inventore voluptatem eum autem, perferendis cupiditate
+                    animi eius soluta, quis molestias? Fuga, expedita. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione incidunt, praesentium facilis aliquid laboriosam explicabo omnis! Nemo neque consequatur, animi dolor non ipsum asperiores nam omnis magni laboriosam enim dolores!</p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
+
   </main>
 
   <script src="js/data.js"></script>

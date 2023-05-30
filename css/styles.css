@@ -8,6 +8,12 @@ header {
   background-color: #562b81;
 }
 
+header > .container > .row > .column-full {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 header > .container > .row > .column-full > h1 {
   font-size: 1rem;
   font-weight: 400;
@@ -15,37 +21,54 @@ header > .container > .row > .column-full > h1 {
   padding: 0.5rem 0.75rem;
 }
 
+header > .container > .row > .column-full > p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: white;
+}
+
 /* Main */
-main.container .row > .column-full:first-of-type {
+main.container > .entry-form > .row > .column-full:first-of-type {
   padding: 0.5rem 0.75rem;
 }
 
-main.container .row > .column-full:first-of-type > h2 {
+main.container > .entries > .row > .column-full:first-of-type {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+}
+
+main.container > .entries > .row > .column-full:nth-of-type(2) {
+  padding: 0.5rem 0.75rem;
+}
+
+main.container > .entry-form > .row > .column-full:first-of-type > h2 {
   font-size: 1.5rem;
   font-weight: 700;
   color: black;
+  margin-bottom: 0.5rem;
 }
 
-main.container .row > .column-full:first-of-type > form > .row > .img-container > img {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .img-container > img {
   width: 100%;
-  height: 250px;
+  height: 300px;
   border-radius: 0.25rem;
   object-fit: cover;
 }
 
-main.container .row > .column-full:first-of-type > form > .row > .column-half:nth-child(2) {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-half:nth-child(2) {
   display: flex;
   flex-direction: column;
 }
 
-main.container .row > .column-full:first-of-type > form > .row label {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row label {
   font-size: 0.75rem;
   font-weight: 700;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-main.container .row > .column-full:first-of-type > form > .row input {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row input {
   font-family: "Proza Libre", sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -56,12 +79,12 @@ main.container .row > .column-full:first-of-type > form > .row input {
   border-radius: 0.25rem;
 }
 
-main.container .row > .column-full:first-of-type > form > .row > .column-full {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-full {
   display: flex;
   flex-direction: column;
 }
 
-main.container .row > .column-full:first-of-type > form > .row textarea {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row textarea {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   font-size: 0.75rem;
@@ -73,12 +96,24 @@ main.container .row > .column-full:first-of-type > form > .row textarea {
   border-radius: 0.25rem;
 }
 
-main.container .row > .column-full:first-of-type > form > .row input:focus,
-main.container .row > .column-full:first-of-type > form > .row textarea:focus {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row input:focus,
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row textarea:focus {
   border: 2px solid #562b81;
 }
 
-main.container .row > .column-full:first-of-type > form > .row > .column-full:nth-child(4) > button {
+main.container > .entries > .row > .column-full:first-of-type > button {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-decoration: none;
+  background-color: #562b81;
+  color: white;
+  padding: 0 0.5rem;
+  border: 1px solid #562b81;
+  border-radius: 0.25rem;
+}
+
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-full:nth-child(4) > button {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
   font-size: 0.75rem;
@@ -91,25 +126,67 @@ main.container .row > .column-full:first-of-type > form > .row > .column-full:nt
   align-self: flex-end;
 }
 
-main.container .row > .column-full:first-of-type > form > .row > .column-full > button:hover {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-full > button:hover {
   cursor: pointer;
   background-color: #7644c7;
   border-color: #7644c7;
 }
 
-main.container .row > .column-full:first-of-type > form > .row > .column-full > button:active {
+main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-full > button:active {
   background-color: #3f1b5c;
   border-color: #3f1b5c;
+}
+
+main.container > .entries > .row > .column-full:first-of-type > h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+}
+
+main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li {
+  list-style-type: none;
+  margin-bottom: 1rem;
+}
+
+main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row > .img-container > img {
+  width: 100%;
+  height: 300px;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row > .column-half:nth-child(2) > h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: black;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row > .column-half:nth-child(2) > p {
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  color: black;
+  margin-bottom: 1rem;
 }
 
 /* Media Query */
 @media screen and (min-width: 768px) {
   header > .container > .row > .column-full > h1,
-  main.container .row > .column-full:first-of-type {
-    padding: 0.5rem 10rem;
+  main.container > .entry-form > .row > .column-full:first-of-type,
+  main.container > .entries > .row > .column-full:first-of-type,
+  main.container > .entries > .row > .column-full:nth-of-type(2) {
+    padding-left: 10rem;
   }
 
-  main.container .row > .column-full:first-of-type > form > .row > .img-container > img {
-    width: 95%;
+  main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .img-container > img,
+  main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row > .img-container > img {
+    padding-right: 1rem;
+  }
+
+  main.container > .entry-form > .row > .column-full:first-of-type > form > .row label:first-of-type,
+  main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row > .column-half:nth-child(2) > h3 {
+    margin-top: 0;
   }
 }

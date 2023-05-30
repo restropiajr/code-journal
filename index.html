@@ -30,29 +30,31 @@
   </header>
 
   <main class="container">
-    <div class="row">
-      <div class="column-full" data-view="entry-form">
-        <h2>New Entry</h2>
-        <form>
-          <div class="row">
-            <div class="img-container column-full column-half">
-              <img id="photo-preview" src="images/placeholder-image-square.jpg" alt="photo-preview">
+    <div data-view="entry-form">
+      <div class="row">
+        <div class="column-full">
+          <h2>New Entry</h2>
+          <form>
+            <div class="row">
+              <div class="img-container column-half">
+                <img id="photo-preview" src="images/placeholder-image-square.jpg" alt="photo-preview">
+              </div>
+              <div class="column-half">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+                <label for="photo-url">Photo URL</label>
+                <input type="text" id="photo-url" name="photo-url" required>
+              </div>
+              <div class="column-full">
+                <label for="notes">Notes</label>
+                <textarea name="notes" id="notes" cols="30" rows="7" required></textarea>
+              </div>
+              <div class="column-full">
+                <button type="submit" id="save-button">SAVE</button>
+              </div>
             </div>
-            <div class="column-full column-half">
-              <label for="title">Title</label>
-              <input type="text" id="title" name="title" required>
-              <label for="photo-url">Photo URL</label>
-              <input type="text" id="photo-url" name="photo-url" required>
-            </div>
-            <div class="column-full">
-              <label for="notes">Notes</label>
-              <textarea name="notes" id="notes" cols="30" rows="7" required></textarea>
-            </div>
-            <div class="column-full">
-              <button type="submit" id="save-button">SAVE</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
 

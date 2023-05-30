@@ -60,16 +60,21 @@ function renderEntry(entry) {
   return li;
 }
 
-// DOM Content Loaded Event Listener
-document.addEventListener('DOMContentLoaded', event => {
-  const ul = document.querySelector('ul');
-  const entryViewDiv = document.querySelector('#entry-view');
+// Toggle No Entries Function
+const ul = document.querySelector('ul');
+const entryViewDiv = document.querySelector('#entry-view');
+
+function toggleNoEntries() {
   const noEntriesMessage = document.createElement('p');
   noEntriesMessage.textContent = 'No entries have been recorded.';
+  ul.remove();
+  entryViewDiv.appendChild(noEntriesMessage);
+}
 
+// DOM Content Loaded Event Listener
+document.addEventListener('DOMContentLoaded', event => {
   if (data.entries.length === 0) {
-    ul.remove();
-    entryViewDiv.appendChild(noEntriesMessage);
+    toggleNoEntries();
   } else {
     for (const entry of data.entries) {
       ul.appendChild(renderEntry(entry));

@@ -63,8 +63,16 @@ function renderEntry(entry) {
 // DOM Content Loaded Event Listener
 document.addEventListener('DOMContentLoaded', event => {
   const ul = document.querySelector('ul');
+  const entryViewDiv = document.querySelector('#entry-view');
+  const noEntriesMessage = document.createElement('p');
+  noEntriesMessage.textContent = 'No entries have been recorded.';
 
-  for (const entry of data.entries) {
-    ul.appendChild(renderEntry(entry));
+  if (data.entries.length === 0) {
+    ul.remove();
+    entryViewDiv.appendChild(noEntriesMessage);
+  } else {
+    for (const entry of data.entries) {
+      ul.appendChild(renderEntry(entry));
+    }
   }
 });

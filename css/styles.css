@@ -171,6 +171,11 @@ main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row 
   margin-bottom: 1rem;
 }
 
+#entry-view {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 /* Media Query */
 @media screen and (min-width: 768px) {
   header > .container > .row > .column-full > h1,

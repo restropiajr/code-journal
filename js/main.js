@@ -85,14 +85,14 @@ document.addEventListener('DOMContentLoaded', event => {
 // View Swap Function
 function viewSwap(view) {
 
-  const entriesFormview = document.querySelector('[data-view="entry-form"]');
+  const entryFormview = document.querySelector('[data-view="entry-form"]');
   const entriesView = document.querySelector('[data-view="entries"]');
 
-  entriesFormview.classList.add('hidden');
+  entryFormview.classList.add('hidden');
   entriesView.classList.add('hidden');
 
   if (view === 'entry-form') {
-    entriesFormview.classList.remove('hidden');
+    entryFormview.classList.remove('hidden');
   } else {
     entriesView.classList.remove('hidden');
   }
@@ -101,8 +101,15 @@ function viewSwap(view) {
 }
 
 // Entries View Event Listener
-const entriesViewAnchor = document.querySelector('#entries-view');
+const entriesViewAnchor = document.querySelector('#entries-button');
 
 entriesViewAnchor.addEventListener('click', event => {
   viewSwap('entries');
+});
+
+// Entry Form View Event Listener
+const entryFormAnchor = document.querySelector('#new-button');
+
+entryFormAnchor.addEventListener('click', event => {
+  viewSwap('entry-form');
 });

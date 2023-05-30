@@ -106,16 +106,20 @@ main.container > .entry-form > .row > .column-full:first-of-type > form > .row t
   border: 2px solid #562b81;
 }
 
-main.container > .entries > .row > .column-full:first-of-type > button {
+main.container > .entries > .row > .column-full:first-of-type > a {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;
-  font-size: 0.75rem;
+  font-size: 1rem;
   text-decoration: none;
   background-color: #562b81;
   color: white;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   border: 1px solid #562b81;
   border-radius: 0.25rem;
+}
+
+main.container > .entries > .row > .column-full:first-of-type > a:hover {
+  cursor: pointer;
 }
 
 main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-full:nth-child(4) > button {
@@ -176,20 +180,13 @@ main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row 
   margin-bottom: 1rem;
 }
 
-#entry-view {
+#entry-view > p {
   text-align: center;
   margin-top: 1rem;
 }
 
 /* Media Query */
 @media screen and (min-width: 768px) {
-  header > .container > .row > .column-full > h1,
-  main.container > .entry-form > .row > .column-full:first-of-type,
-  main.container > .entries > .row > .column-full:first-of-type,
-  main.container > .entries > .row > .column-full:nth-of-type(2) {
-    padding-left: 10rem;
-  }
-
   main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .img-container > img,
   main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row > .img-container > img {
     padding-right: 1rem;

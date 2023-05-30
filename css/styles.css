@@ -21,10 +21,15 @@ header > .container > .row > .column-full > h1 {
   padding: 0.5rem 0.75rem;
 }
 
-header > .container > .row > .column-full > p {
+header > .container > .row > .column-full > a {
   font-size: 0.75rem;
   font-weight: 400;
+  text-decoration: none;
   color: white;
+}
+
+header > .container > .row > .column-full > a:hover {
+  cursor: pointer;
 }
 
 /* Main */

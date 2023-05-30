@@ -81,3 +81,28 @@ document.addEventListener('DOMContentLoaded', event => {
     }
   }
 });
+
+// View Swap Function
+function viewSwap(view) {
+
+  const entriesFormview = document.querySelector('[data-view="entry-form"]');
+  const entriesView = document.querySelector('[data-view="entries"]');
+
+  entriesFormview.classList.add('hidden');
+  entriesView.classList.add('hidden');
+
+  if (view === 'entry-form') {
+    entriesFormview.classList.remove('hidden');
+  } else {
+    entriesView.classList.remove('hidden');
+  }
+
+  data.view = view;
+}
+
+// Entries View Event Listener
+const entriesViewAnchor = document.querySelector('#entries-view');
+
+entriesViewAnchor.addEventListener('click', event => {
+  viewSwap('entries');
+});

@@ -60,8 +60,11 @@ function renderEntry(entry) {
   return li;
 }
 
-const ul = document.querySelector('ul');
+// DOM Content Loaded Event Listener
+document.addEventListener('DOMContentLoaded', event => {
+  const ul = document.querySelector('ul');
 
-for (const entry of data.entries) {
-  ul.appendChild(renderEntry(entry));
-}
+  for (const entry of data.entries) {
+    ul.appendChild(renderEntry(entry));
+  }
+});

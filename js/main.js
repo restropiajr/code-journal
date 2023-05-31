@@ -34,30 +34,47 @@ $form.addEventListener('submit', event => {
 // Render Entry Function
 function renderEntry(entry) {
   const $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', entry.entryId);
 
-  const $rowDiv = document.createElement('div');
-  $rowDiv.className = 'row';
-  $li.appendChild($rowDiv);
+  const $rowDivOne = document.createElement('div');
+  $rowDivOne.className = 'row';
+  $li.appendChild($rowDivOne);
 
   const $imgContainerColumnHalfDiv = document.createElement('div');
   $imgContainerColumnHalfDiv.className = 'img-container column-half';
-  $rowDiv.appendChild($imgContainerColumnHalfDiv);
+  $rowDivOne.appendChild($imgContainerColumnHalfDiv);
 
   const $img = document.createElement('img');
   $img.setAttribute('src', entry.URL);
   $imgContainerColumnHalfDiv.appendChild($img);
 
-  const $columnHalfDiv = document.createElement('div');
-  $columnHalfDiv.className = 'column-half';
-  $rowDiv.appendChild($columnHalfDiv);
+  const $columnHalfDivOne = document.createElement('div');
+  $columnHalfDivOne.className = 'column-half';
+  $rowDivOne.appendChild($columnHalfDivOne);
+
+  const $rowDivTwo = document.createElement('div');
+  $rowDivTwo.className = 'row';
+  $columnHalfDivOne.appendChild($rowDivTwo);
+
+  const $columnfullDivTwo = document.createElement('div');
+  $columnfullDivTwo.className = 'column-full';
+  $rowDivTwo.appendChild($columnfullDivTwo);
 
   const $h3 = document.createElement('h3');
   $h3.textContent = entry.title;
-  $columnHalfDiv.appendChild($h3);
+  $columnfullDivTwo.appendChild($h3);
+
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.className = 'fa-solid fa-pencil fa-2xl';
+  $columnfullDivTwo.appendChild($pencilIcon);
+
+  const $columnFullDivThree = document.createElement('div');
+  $columnFullDivThree.className = 'column-full';
+  $rowDivTwo.appendChild($columnFullDivThree);
 
   const $p = document.createElement('p');
   $p.textContent = entry.notes;
-  $columnHalfDiv.appendChild($p);
+  $columnFullDivThree.appendChild($p);
 
   return $li;
 }

@@ -30,6 +30,13 @@ header > .container > .row > .column-full > a {
 
 header > .container > .row > .column-full > a:hover {
   cursor: pointer;
+  background-color: #7644c7;
+  border-color: #7644c7;
+}
+
+header > .container > .row > .column-full > a:active {
+  background-color: #3f1b5c;
+  border-color: #3f1b5c;
 }
 
 /* Main */
@@ -120,6 +127,13 @@ main.container > .entries > .row > .column-full:first-of-type > a {
 
 main.container > .entries > .row > .column-full:first-of-type > a:hover {
   cursor: pointer;
+  background-color: #7644c7;
+  border-color: #7644c7;
+}
+
+main.container > .entries > .row > .column-full:first-of-type > a:active {
+  background-color: #3f1b5c;
+  border-color: #3f1b5c;
 }
 
 main.container > .entry-form > .row > .column-full:first-of-type > form > .row > .column-full:nth-child(4) > button {
@@ -180,7 +194,7 @@ main.container > .entries > .row > .column-full:nth-of-type(2) > ul > li > .row 
   margin-bottom: 1rem;
 }
 
-#entry-view > p {
+#no-entries-message {
   text-align: center;
   margin-top: 1rem;
 }

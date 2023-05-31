@@ -13,22 +13,51 @@ const $notes = document.querySelector('#notes');
 $form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const entry = {
-    entryId: data.nextEntryId,
-    title: $title.value,
-    URL: $photoURL.value,
-    notes: $notes.value
-  };
+  if (data.editing === null) {
+    const entry = {
+      entryId: data.nextEntryId,
+      title: $title.value,
+      URL: $photoURL.value,
+      notes: $notes.value
+    };
 
-  data.entries.unshift(entry);
-  data.nextEntryId++;
+    data.entries.unshift(entry);
+    data.nextEntryId++;
 
-  $ul.prepend(renderEntry(entry));
-  viewSwap('entries');
-  toggleNoEntries();
+    $ul.prepend(renderEntry(entry));
 
-  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $form.reset();
+    $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $form.reset();
+    toggleNoEntries();
+    viewSwap('entries');
+
+  } else {
+
+    const edittedEntry = {
+      entryId: data.editing.entryId,
+      title: $title.value,
+      URL: $photoURL.value,
+      notes: $notes.value
+    };
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (edittedEntry.entryId === data.entries[i].entryId) {
+        data.entries[i] = edittedEntry;
+      }
+    }
+
+    const $currentLi = document.querySelector(`li[data-entry-id="${edittedEntry.entryId}"]`);
+    const $newLi = renderEntry(edittedEntry);
+    $currentLi.replaceWith($newLi);
+
+    $newEditEntry.textContent = 'New Entry';
+    $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $form.reset();
+    data.editing = null;
+    toggleNoEntries();
+    viewSwap('entries');
+  }
+
 });
 
 // Render Entry Function
@@ -126,16 +155,13 @@ $entriesViewAnchor.addEventListener('click', event => {
 });
 
 // Edit View Event Listener
+const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
 
-  const $pencil = event.target;
-  const $li = $pencil.closest('li');
-  const editingEntryId = $li.getAttribute('data-entry-id');
-  const $newEditEntry = document.querySelector('#new-edit-entry');
-
-  if ($pencil.classList.contains('fa-pencil')) {
+  if (event.target.classList.contains('fa-pencil')) {
     viewSwap('entry-form');
-
+    const $li = event.target.closest('li');
+    const editingEntryId = $li.getAttribute('data-entry-id');
     for (const entry of data.entries) {
       if (entry.entryId === +editingEntryId) {
         data.editing = entry;

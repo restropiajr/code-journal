@@ -46,9 +46,9 @@ h1 {
   text-decoration: none;
   background-color: #562b81;
   color: white;
-  padding: 0.5rem;
   border: 1px solid #562b81;
   border-radius: 0.25rem;
+  padding: 0.25rem;
 }
 
 #entries-button:hover,
@@ -74,6 +74,7 @@ h1 {
 .entries .column-full:first-of-type {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0.5rem 0.75rem;
 }
 
@@ -188,5 +189,9 @@ li p {
   .column-half > label:first-of-type,
   h3 {
     margin-top: 0;
+  }
+
+  img {
+    height: 450px;
   }
 }

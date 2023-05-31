@@ -65,7 +65,7 @@ function renderEntry(entry) {
   $columnfullDivTwo.appendChild($h3);
 
   const $pencilIcon = document.createElement('i');
-  $pencilIcon.className = 'fa-solid fa-pencil fa-2xl';
+  $pencilIcon.className = 'fa-solid fa-pencil fa-xl';
   $columnfullDivTwo.appendChild($pencilIcon);
 
   const $columnFullDivThree = document.createElement('div');
@@ -123,4 +123,29 @@ $entryFormAnchor.addEventListener('click', event => {
 const $entriesViewAnchor = document.querySelector('#entries-button');
 $entriesViewAnchor.addEventListener('click', event => {
   viewSwap('entries');
+});
+
+// Edit View Event Listener
+$ul.addEventListener('click', event => {
+
+  const $pencil = event.target;
+  const $li = $pencil.closest('li');
+  const editingEntryId = $li.getAttribute('data-entry-id');
+  const $newEditEntry = document.querySelector('#new-edit-entry');
+
+  if ($pencil.classList.contains('fa-pencil')) {
+    viewSwap('entry-form');
+
+    for (const entry of data.entries) {
+      if (entry.entryId === +editingEntryId) {
+        data.editing = entry;
+      }
+    }
+    $title.value = data.editing.title;
+    $photoURL.value = data.editing.URL;
+    $notes.value = data.editing.notes;
+
+    $newEditEntry.textContent = 'Edit Entry';
+  }
+
 });

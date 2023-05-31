@@ -195,6 +195,62 @@ li p {
   overflow-wrap: break-word;
 }
 
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-dialog {
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.cancel-confirm-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.modal-dialog > h3 {
+  font-weight: 400;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+#cancel-button {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-decoration: none;
+  background-color: #b6b6b6;
+  color: black;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid white;
+  border-radius: 0.25rem;
+}
+
+#confirm-button {
+  font-family: "Proza Libre", sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem;
+  text-decoration: none;
+  background-color: #e48484;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid white;
+  border-radius: 0.25rem;
+}
+
 /* Media Query */
 @media screen and (min-width: 768px) {
   li .column-half:nth-child(2),

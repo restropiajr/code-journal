@@ -167,7 +167,6 @@ $ul.addEventListener('click', event => {
   $deleteButton.setAttribute('href', '#');
   $deleteButton.setAttribute('id', 'delete-button');
   $deleteButton.textContent = 'Delete Entry';
-
   const $saveButton = document.querySelector('#save-button');
   const $deleteButtonDiv = $saveButton.closest('.column-full');
   $deleteButtonDiv.prepend($deleteButton);
@@ -187,5 +186,11 @@ $ul.addEventListener('click', event => {
     $newEditEntry.textContent = 'Edit Entry';
     viewSwap('entry-form');
   }
+});
+
+// Delete Entry Event Listener
+const $modalContainerDiv = document.querySelector('.modal-container');
+$deleteButton.addEventListener('click', event => {
+  $modalContainerDiv.classList.remove('hidden');
 
 });

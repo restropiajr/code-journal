@@ -13,51 +13,97 @@ const $notes = document.querySelector('#notes');
 $form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const entry = {
-    entryId: data.nextEntryId,
-    title: $title.value,
-    URL: $photoURL.value,
-    notes: $notes.value
-  };
+  if (data.editing === null) {
+    const entry = {
+      entryId: data.nextEntryId,
+      title: $title.value,
+      URL: $photoURL.value,
+      notes: $notes.value
+    };
 
-  data.entries.unshift(entry);
-  data.nextEntryId++;
+    data.entries.unshift(entry);
+    data.nextEntryId++;
 
-  $ul.prepend(renderEntry(entry));
-  viewSwap('entries');
-  toggleNoEntries();
+    $ul.prepend(renderEntry(entry));
 
-  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
-  $form.reset();
+    $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $form.reset();
+    toggleNoEntries();
+    viewSwap('entries');
+
+  } else {
+
+    const edittedEntry = {
+      entryId: data.editing.entryId,
+      title: $title.value,
+      URL: $photoURL.value,
+      notes: $notes.value
+    };
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (edittedEntry.entryId === data.entries[i].entryId) {
+        data.entries[i] = edittedEntry;
+      }
+    }
+
+    const $currentLi = document.querySelector(`li[data-entry-id="${edittedEntry.entryId}"]`);
+    const $newLi = renderEntry(edittedEntry);
+    $currentLi.replaceWith($newLi);
+
+    $newEditEntry.textContent = 'New Entry';
+    $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $form.reset();
+    data.editing = null;
+    toggleNoEntries();
+    viewSwap('entries');
+  }
+
 });
 
 // Render Entry Function
 function renderEntry(entry) {
   const $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', entry.entryId);
 
-  const $rowDiv = document.createElement('div');
-  $rowDiv.className = 'row';
-  $li.appendChild($rowDiv);
+  const $rowDivOne = document.createElement('div');
+  $rowDivOne.className = 'row';
+  $li.appendChild($rowDivOne);
 
   const $imgContainerColumnHalfDiv = document.createElement('div');
   $imgContainerColumnHalfDiv.className = 'img-container column-half';
-  $rowDiv.appendChild($imgContainerColumnHalfDiv);
+  $rowDivOne.appendChild($imgContainerColumnHalfDiv);
 
   const $img = document.createElement('img');
   $img.setAttribute('src', entry.URL);
   $imgContainerColumnHalfDiv.appendChild($img);
 
-  const $columnHalfDiv = document.createElement('div');
-  $columnHalfDiv.className = 'column-half';
-  $rowDiv.appendChild($columnHalfDiv);
+  const $columnHalfDivOne = document.createElement('div');
+  $columnHalfDivOne.className = 'column-half';
+  $rowDivOne.appendChild($columnHalfDivOne);
+
+  const $rowDivTwo = document.createElement('div');
+  $rowDivTwo.className = 'row';
+  $columnHalfDivOne.appendChild($rowDivTwo);
+
+  const $columnfullDivTwo = document.createElement('div');
+  $columnfullDivTwo.className = 'column-full';
+  $rowDivTwo.appendChild($columnfullDivTwo);
 
   const $h3 = document.createElement('h3');
   $h3.textContent = entry.title;
-  $columnHalfDiv.appendChild($h3);
+  $columnfullDivTwo.appendChild($h3);
+
+  const $pencilIcon = document.createElement('i');
+  $pencilIcon.className = 'fa-solid fa-pencil fa-xl';
+  $columnfullDivTwo.appendChild($pencilIcon);
+
+  const $columnFullDivThree = document.createElement('div');
+  $columnFullDivThree.className = 'column-full';
+  $rowDivTwo.appendChild($columnFullDivThree);
 
   const $p = document.createElement('p');
   $p.textContent = entry.notes;
-  $columnHalfDiv.appendChild($p);
+  $columnFullDivThree.appendChild($p);
 
   return $li;
 }
@@ -106,4 +152,26 @@ $entryFormAnchor.addEventListener('click', event => {
 const $entriesViewAnchor = document.querySelector('#entries-button');
 $entriesViewAnchor.addEventListener('click', event => {
   viewSwap('entries');
+});
+
+// Edit View Event Listener
+const $newEditEntry = document.querySelector('#new-edit-entry');
+$ul.addEventListener('click', event => {
+
+  if (event.target.classList.contains('fa-pencil')) {
+    const $li = event.target.closest('li');
+    const editingEntryId = $li.getAttribute('data-entry-id');
+    for (const entry of data.entries) {
+      if (entry.entryId === Number(editingEntryId)) {
+        data.editing = entry;
+      }
+    }
+    $title.value = data.editing.title;
+    $photoURL.value = data.editing.URL;
+    $notes.value = data.editing.notes;
+
+    $newEditEntry.textContent = 'Edit Entry';
+    viewSwap('entry-form');
+  }
+
 });

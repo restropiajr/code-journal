@@ -36,7 +36,7 @@ h1 {
   padding: 0.25rem 0.75rem;
   border: 1px solid #562b81;
   border-radius: 0.25rem;
-  align-self: flex-end;
+  margin-left: auto;
 }
 
 #new-button {
@@ -115,9 +115,21 @@ input {
   border-radius: 0.5rem;
 }
 
-.entry-form .column-full:first-of-type .column-full {
+.entry-form .column-full:nth-last-of-type(2) {
   display: flex;
   flex-direction: column;
+}
+
+#delete-save-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#delete-button {
+  font-size: 0.75rem;
+  color: #e48484;
+  font-weight: 700;
 }
 
 textarea {
@@ -169,6 +181,10 @@ h3 {
 
 .fa-solid {
   color: purple;
+}
+
+.fa-solid:hover {
+  cursor: pointer;
 }
 
 li p {

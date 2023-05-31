@@ -94,7 +94,7 @@ function renderEntry(entry) {
   $columnfullDivTwo.appendChild($h3);
 
   const $pencilIcon = document.createElement('i');
-  $pencilIcon.className = 'fa-solid fa-pencil fa-xl';
+  $pencilIcon.className = 'fa-solid fa-pencil fa-beat fa-xl';
   $columnfullDivTwo.appendChild($pencilIcon);
 
   const $columnFullDivThree = document.createElement('div');
@@ -151,12 +151,26 @@ $entryFormAnchor.addEventListener('click', event => {
 // Entries View Event Listener
 const $entriesViewAnchor = document.querySelector('#entries-button');
 $entriesViewAnchor.addEventListener('click', event => {
+  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
+  $newEditEntry.textContent = 'New Entry';
+  data.editing = null;
+  $deleteButton.remove();
   viewSwap('entries');
 });
 
 // Edit View Event Listener
+const $deleteButton = document.createElement('a');
 const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
+
+  $deleteButton.setAttribute('href', '#');
+  $deleteButton.setAttribute('id', 'delete-button');
+  $deleteButton.textContent = 'Delete Entry';
+
+  const $saveButton = document.querySelector('#save-button');
+  const $deleteButtonDiv = $saveButton.closest('.column-full');
+  $deleteButtonDiv.prepend($deleteButton);
 
   if (event.target.classList.contains('fa-pencil')) {
     const $li = event.target.closest('li');

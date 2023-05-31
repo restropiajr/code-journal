@@ -23,7 +23,7 @@ $form.addEventListener('submit', event => {
   data.entries.unshift(entry);
   data.nextEntryId++;
 
-  ul.prepend(renderEntry(entry));
+  $ul.prepend(renderEntry(entry));
   viewSwap('entries');
   toggleNoEntries();
 
@@ -33,80 +33,77 @@ $form.addEventListener('submit', event => {
 
 // Render Entry Function
 function renderEntry(entry) {
-  const li = document.createElement('li');
+  const $li = document.createElement('li');
 
-  const rowDiv = document.createElement('div');
-  rowDiv.className = 'row';
-  li.appendChild(rowDiv);
+  const $rowDiv = document.createElement('div');
+  $rowDiv.className = 'row';
+  $li.appendChild($rowDiv);
 
-  const imgContainerColumnHalfDiv = document.createElement('div');
-  imgContainerColumnHalfDiv.className = 'img-container column-half';
-  rowDiv.appendChild(imgContainerColumnHalfDiv);
+  const $imgContainerColumnHalfDiv = document.createElement('div');
+  $imgContainerColumnHalfDiv.className = 'img-container column-half';
+  $rowDiv.appendChild($imgContainerColumnHalfDiv);
 
-  const img = document.createElement('img');
-  img.setAttribute('src', entry.URL);
-  imgContainerColumnHalfDiv.appendChild(img);
+  const $img = document.createElement('img');
+  $img.setAttribute('src', entry.URL);
+  $imgContainerColumnHalfDiv.appendChild($img);
 
-  const columnHalfDiv = document.createElement('div');
-  columnHalfDiv.className = 'column-half';
-  rowDiv.appendChild(columnHalfDiv);
+  const $columnHalfDiv = document.createElement('div');
+  $columnHalfDiv.className = 'column-half';
+  $rowDiv.appendChild($columnHalfDiv);
 
-  const h3 = document.createElement('h3');
-  h3.textContent = entry.title;
-  columnHalfDiv.appendChild(h3);
+  const $h3 = document.createElement('h3');
+  $h3.textContent = entry.title;
+  $columnHalfDiv.appendChild($h3);
 
-  const p = document.createElement('p');
-  p.textContent = entry.notes;
-  columnHalfDiv.appendChild(p);
+  const $p = document.createElement('p');
+  $p.textContent = entry.notes;
+  $columnHalfDiv.appendChild($p);
 
-  return li;
+  return $li;
 }
 
 // DOM Content Loaded Event Listener
-const ul = document.querySelector('ul');
+const $ul = document.querySelector('ul');
 document.addEventListener('DOMContentLoaded', event => {
   for (const entry of data.entries) {
-    ul.appendChild(renderEntry(entry));
+    $ul.appendChild(renderEntry(entry));
   }
   viewSwap(data.view);
   toggleNoEntries();
 });
 
 // Toggle No Entries Function
-const noEntriesMessage = document.querySelector('#no-entries-message');
+const $noEntriesMessage = document.querySelector('#no-entries-message');
 function toggleNoEntries() {
-  if (data.entries.length === 0) {
-    noEntriesMessage.classList.remove('hidden');
-  } else {
-    noEntriesMessage.classList.add('hidden');
+  if (data.entries.length !== 0) {
+    $noEntriesMessage.classList.add('hidden');
   }
 }
 
 // View Swap Function
-const entryFormview = document.querySelector('[data-view="entry-form"]');
-const entriesView = document.querySelector('[data-view="entries"]');
+const $entryFormview = document.querySelector('[data-view="entry-form"]');
+const $entriesView = document.querySelector('[data-view="entries"]');
 function viewSwap(view) {
 
-  entryFormview.classList.add('hidden');
-  entriesView.classList.add('hidden');
-
   if (view === 'entry-form') {
-    entryFormview.classList.remove('hidden');
-  } else {
-    entriesView.classList.remove('hidden');
+    $entryFormview.classList.remove('hidden');
+    $entriesView.classList.add('hidden');
+  } else if (view === 'entries') {
+    $entryFormview.classList.add('hidden');
+    $entriesView.classList.remove('hidden');
   }
 
   data.view = view;
 }
 
-// Entries View Event Listener
-const entriesViewAnchor = document.querySelector('#entries-button');
-entriesViewAnchor.addEventListener('click', event => {
-  viewSwap('entries');
+// Entry Form View Event Listener
+const $entryFormAnchor = document.querySelector('#new-button');
+$entryFormAnchor.addEventListener('click', event => {
+  viewSwap('entry-form');
 });
 
-// Entry Form View Event Listener
-const entryFormAnchor = document.querySelector('#new-button');
-entryFormAnchor.addEventListener('click', event => {
-  viewSwap('entry-form');
+// Entries View Event Listener
+const $entriesViewAnchor = document.querySelector('#entries-button');
+$entriesViewAnchor.addEventListener('click', event => {
+  viewSwap('entries');
 });

@@ -159,11 +159,10 @@ const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
 
   if (event.target.classList.contains('fa-pencil')) {
-    viewSwap('entry-form');
     const $li = event.target.closest('li');
     const editingEntryId = $li.getAttribute('data-entry-id');
     for (const entry of data.entries) {
-      if (entry.entryId === +editingEntryId) {
+      if (entry.entryId === Number(editingEntryId)) {
         data.editing = entry;
       }
     }
@@ -172,6 +171,7 @@ $ul.addEventListener('click', event => {
     $notes.value = data.editing.notes;
 
     $newEditEntry.textContent = 'Edit Entry';
+    viewSwap('entry-form');
   }
 
 });

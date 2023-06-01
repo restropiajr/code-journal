@@ -151,7 +151,7 @@ $entryFormAnchor.addEventListener('click', event => {
   $form.reset();
   $newEditEntry.textContent = 'New Entry';
   data.editing = null;
-  $deleteButton.remove();
+  $deleteButton.classList.add('hidden');
   viewSwap('entry-form');
 });
 
@@ -163,18 +163,13 @@ $entriesViewAnchor.addEventListener('click', event => {
 });
 
 // Edit View Event Listener
-const $deleteButton = document.createElement('a');
+const $deleteButton = document.querySelector('#delete-button');
 const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
 
-  $deleteButton.setAttribute('href', '#');
-  $deleteButton.setAttribute('id', 'delete-button');
-  $deleteButton.textContent = 'Delete Entry';
-  const $saveButton = document.querySelector('#save-button');
-  const $deleteButtonDiv = $saveButton.closest('.column-full');
-  $deleteButtonDiv.prepend($deleteButton);
-
   if (event.target.classList.contains('fa-pencil')) {
+
+    $deleteButton.classList.remove('hidden');
     const $li = event.target.closest('li');
     const editingEntryId = $li.getAttribute('data-entry-id');
     for (const entry of data.entries) {

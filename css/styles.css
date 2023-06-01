@@ -139,6 +139,11 @@ input {
   font-weight: 700;
 }
 
+#delete-button:active {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
 textarea {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;

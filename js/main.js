@@ -94,7 +94,7 @@ function renderEntry(entry) {
   $columnfullDivTwo.appendChild($h3);
 
   const $pencilIcon = document.createElement('i');
-  $pencilIcon.className = 'fa-solid fa-pencil fa-xl';
+  $pencilIcon.className = 'fa-solid fa-pencil fa-beat fa-xl';
   $columnfullDivTwo.appendChild($pencilIcon);
 
   const $columnFullDivThree = document.createElement('div');
@@ -123,6 +123,8 @@ const $noEntriesMessage = document.querySelector('#no-entries-message');
 function toggleNoEntries() {
   if (data.entries.length !== 0) {
     $noEntriesMessage.classList.add('hidden');
+  } else {
+    $noEntriesMessage.classList.remove('hidden');
   }
 }
 
@@ -145,20 +147,29 @@ function viewSwap(view) {
 // Entry Form View Event Listener
 const $entryFormAnchor = document.querySelector('#new-button');
 $entryFormAnchor.addEventListener('click', event => {
+  $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $form.reset();
+  $newEditEntry.textContent = 'New Entry';
+  data.editing = null;
+  $deleteButton.classList.add('hidden');
   viewSwap('entry-form');
 });
 
 // Entries View Event Listener
 const $entriesViewAnchor = document.querySelector('#entries-button');
 $entriesViewAnchor.addEventListener('click', event => {
+  data.editing = null;
   viewSwap('entries');
 });
 
 // Edit View Event Listener
+const $deleteButton = document.querySelector('#delete-button');
 const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
 
   if (event.target.classList.contains('fa-pencil')) {
+
+    $deleteButton.classList.remove('hidden');
     const $li = event.target.closest('li');
     const editingEntryId = $li.getAttribute('data-entry-id');
     for (const entry of data.entries) {
@@ -169,9 +180,42 @@ $ul.addEventListener('click', event => {
     $title.value = data.editing.title;
     $photoURL.value = data.editing.URL;
     $notes.value = data.editing.notes;
+    $photoPreview.setAttribute('src', $photoURL.value);
 
     $newEditEntry.textContent = 'Edit Entry';
     viewSwap('entry-form');
   }
+});
 
+// Delete Entry Event Listener
+const $modalContainerDiv = document.querySelector('.modal-container');
+const $cancelButton = document.querySelector('#cancel-button');
+const $confirmButton = document.querySelector('#confirm-button');
+$deleteButton.addEventListener('click', event => {
+  $modalContainerDiv.classList.remove('hidden');
+});
+
+// Modal Cancel and Confirm Event Listener
+$modalContainerDiv.addEventListener('click', event => {
+
+  if (event.target === $cancelButton) {
+    $modalContainerDiv.classList.add('hidden');
+  } else if (event.target === $confirmButton) {
+
+    const deletingEntryId = data.editing.entryId;
+
+    for (let i = 0; i < data.entries.length; i++) {
+      if (deletingEntryId === data.entries[i].entryId) {
+        data.entries.splice(i, 1);
+        const $deletingLi = document.querySelector(`li[data-entry-id="${deletingEntryId}"]`);
+        $deletingLi.remove();
+        break;
+      }
+    }
+
+    data.editing = null;
+    $modalContainerDiv.classList.add('hidden');
+    viewSwap('entries');
+    toggleNoEntries();
+  }
 });

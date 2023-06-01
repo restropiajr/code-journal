@@ -249,6 +249,11 @@ li p {
   border-radius: 0.25rem;
 }
 
+#cancel-button:hover,
+#confirm-button {
+  cursor: pointer;
+}
+
 #confirm-button {
   font-family: "Proza Libre", sans-serif;
   font-weight: 400;

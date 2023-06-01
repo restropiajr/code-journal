@@ -88,9 +88,7 @@ h2 {
 
 img {
   width: 100%;
-  height: 300px;
   border-radius: 1rem;
-  object-fit: cover;
 }
 
 .entry-form .column-full:first-of-type .column-half:nth-child(2) {
@@ -281,9 +279,5 @@ li p {
   .column-half > label:first-of-type,
   h3 {
     margin-top: 0;
-  }
-
-  img {
-    height: 450px;
   }
 }

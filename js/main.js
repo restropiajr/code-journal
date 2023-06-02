@@ -149,6 +149,7 @@ const $entryFormAnchor = document.querySelector('#new-button');
 $entryFormAnchor.addEventListener('click', event => {
   $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  searchBarReset();
   $newEditEntry.textContent = 'New Entry';
   data.editing = null;
   $deleteButton.classList.add('hidden');
@@ -159,6 +160,7 @@ $entryFormAnchor.addEventListener('click', event => {
 const $entriesViewAnchor = document.querySelector('#entries-button');
 $entriesViewAnchor.addEventListener('click', event => {
   data.editing = null;
+  searchBarReset();
   viewSwap('entries');
 });
 
@@ -166,6 +168,7 @@ $entriesViewAnchor.addEventListener('click', event => {
 const $deleteButton = document.querySelector('#delete-button');
 const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
+  searchBarReset();
 
   if (event.target.classList.contains('fa-pencil')) {
 
@@ -222,6 +225,7 @@ $modalContainerDiv.addEventListener('click', event => {
 
 // Search Entry Event Listener
 const $searchForm = document.querySelector('#search-form');
+const $searchBar = document.querySelector('#search-bar');
 
 $searchForm.addEventListener('input', event => {
   const searchText = event.target.value.toLowerCase();
@@ -239,3 +243,11 @@ $searchForm.addEventListener('input', event => {
 
   }
 });
+
+function searchBarReset() {
+  $searchBar.value = '';
+  for (const entry of data.entries) {
+    const $li = document.querySelector(`li[data-entry-id="${entry.entryId}"]`);
+    $li.classList.remove('hidden');
+  }
+}

@@ -1,13 +1,13 @@
 
 // Input Event Listener
 const $photoURL = document.querySelector('#photo-url');
-const $photoPreview = document.querySelector(('#photo-preview'));
+const $photoPreview = document.querySelector('#photo-preview');
 $photoURL.addEventListener('input', () => {
   $photoPreview.setAttribute('src', $photoURL.value);
 });
 
 // Submit Event Listener
-const $form = document.querySelector('form');
+const $form = document.querySelector('#entry-form');
 const $title = document.querySelector('#title');
 const $notes = document.querySelector('#notes');
 $form.addEventListener('submit', event => {
@@ -217,5 +217,25 @@ $modalContainerDiv.addEventListener('click', event => {
     $modalContainerDiv.classList.add('hidden');
     viewSwap('entries');
     toggleNoEntries();
+  }
+});
+
+// Search Entry Event Listener
+const $searchForm = document.querySelector('#search-form');
+
+$searchForm.addEventListener('input', event => {
+  const searchText = event.target.value.toLowerCase();
+
+  for (const entry of data.entries) {
+    const titleMatch = entry.title.toLowerCase();
+    const notesMatch = entry.notes.toLowerCase();
+
+    const $li = document.querySelector(`li[data-entry-id="${entry.entryId}"]`);
+    if (titleMatch.includes(searchText) || notesMatch.includes(searchText)) {
+      $li.classList.remove('hidden');
+    } else {
+      $li.classList.add('hidden');
+    }
+
   }
 });

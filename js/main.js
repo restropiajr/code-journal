@@ -1,13 +1,13 @@
 
 // Input Event Listener
 const $photoURL = document.querySelector('#photo-url');
-const $photoPreview = document.querySelector(('#photo-preview'));
+const $photoPreview = document.querySelector('#photo-preview');
 $photoURL.addEventListener('input', () => {
   $photoPreview.setAttribute('src', $photoURL.value);
 });
 
 // Submit Event Listener
-const $form = document.querySelector('form');
+const $form = document.querySelector('#entry-form');
 const $title = document.querySelector('#title');
 const $notes = document.querySelector('#notes');
 $form.addEventListener('submit', event => {
@@ -149,6 +149,7 @@ const $entryFormAnchor = document.querySelector('#new-button');
 $entryFormAnchor.addEventListener('click', event => {
   $photoPreview.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  searchBarReset();
   $newEditEntry.textContent = 'New Entry';
   data.editing = null;
   $deleteButton.classList.add('hidden');
@@ -159,6 +160,7 @@ $entryFormAnchor.addEventListener('click', event => {
 const $entriesViewAnchor = document.querySelector('#entries-button');
 $entriesViewAnchor.addEventListener('click', event => {
   data.editing = null;
+  searchBarReset();
   viewSwap('entries');
 });
 
@@ -166,6 +168,7 @@ $entriesViewAnchor.addEventListener('click', event => {
 const $deleteButton = document.querySelector('#delete-button');
 const $newEditEntry = document.querySelector('#new-edit-entry');
 $ul.addEventListener('click', event => {
+  searchBarReset();
 
   if (event.target.classList.contains('fa-pencil')) {
 
@@ -219,3 +222,32 @@ $modalContainerDiv.addEventListener('click', event => {
     toggleNoEntries();
   }
 });
+
+// Search Entry Event Listener
+const $searchForm = document.querySelector('#search-form');
+const $searchBar = document.querySelector('#search-bar');
+
+$searchForm.addEventListener('input', event => {
+  const searchText = event.target.value.toLowerCase();
+
+  for (const entry of data.entries) {
+    const titleMatch = entry.title.toLowerCase();
+    const notesMatch = entry.notes.toLowerCase();
+
+    const $li = document.querySelector(`li[data-entry-id="${entry.entryId}"]`);
+    if (titleMatch.includes(searchText) || notesMatch.includes(searchText)) {
+      $li.classList.remove('hidden');
+    } else {
+      $li.classList.add('hidden');
+    }
+
+  }
+});
+
+function searchBarReset() {
+  $searchBar.value = '';
+  for (const entry of data.entries) {
+    const $li = document.querySelector(`li[data-entry-id="${entry.entryId}"]`);
+    $li.classList.remove('hidden');
+  }
+}
